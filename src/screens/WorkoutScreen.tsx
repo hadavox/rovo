@@ -32,7 +32,7 @@ const PHASE_LABELS: Record<Phase, string> = {
 };
 
 export function WorkoutScreen({ workout, onDone }: Props) {
-  const { state, toggle, skip } = useWorkoutTimer(workout);
+  const { state, toggle, skip, restart } = useWorkoutTimer(workout);
   const { phase, stepIndex, timeLeft, totalTime, isPaused, elapsedSeconds } = state;
 
   const currentStep = workout.steps[stepIndex];
@@ -72,7 +72,8 @@ export function WorkoutScreen({ workout, onDone }: Props) {
           <p className="complete-workout-name">{workout.name}</p>
           <p className="complete-time">{formatElapsed(elapsedSeconds)}</p>
           <p className="complete-steps">{workout.steps.length} exercises complete</p>
-          <button className="complete-btn" onClick={onDone}>Back to home</button>
+          <button className="complete-btn" onClick={restart}>One more round</button>
+          <button className="complete-btn complete-btn--secondary" onClick={onDone}>Back to home</button>
         </div>
       </div>
     );

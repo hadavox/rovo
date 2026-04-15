@@ -142,6 +142,17 @@ export function useWorkoutTimer(workout: Workout) {
     setState((prev) => ({ ...prev, isPaused: !prev.isPaused }));
   }, []);
 
+  const restart = useCallback(() => {
+    setState({
+      phase: 'intro',
+      stepIndex: 0,
+      timeLeft: 5,
+      totalTime: 5,
+      isPaused: false,
+      elapsedSeconds: 0,
+    });
+  }, []);
+
   const skip = useCallback(() => {
     setState((prev) => {
       const { phase, stepIndex } = prev;
@@ -186,5 +197,5 @@ export function useWorkoutTimer(workout: Workout) {
     });
   }, [workout, workTransition, restTransition, workoutComplete]);
 
-  return { state, toggle, skip };
+  return { state, toggle, skip, restart };
 }
