@@ -264,6 +264,13 @@
   margin: 0;
 }
 
+.complete-rounds {
+  font-size: 0.82rem;
+  color: var(--accent);
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
 .complete-btn {
   margin-top: 28px;
   background: var(--accent);
@@ -280,3 +287,11 @@
 }
 .complete-btn:hover   { opacity: 0.9; }
 .complete-btn:active  { transform: scale(0.97); }
+
+.complete-btn--secondary {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1.5px solid var(--border);
+  margin-top: 0;
+}
+.complete-btn--secondary:hover { color: var(--text-secondary); border-color: var(--text-muted); }
