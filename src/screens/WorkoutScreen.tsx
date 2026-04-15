@@ -33,7 +33,7 @@ const PHASE_LABELS: Record<Phase, string> = {
 
 export function WorkoutScreen({ workout, onDone }: Props) {
   const { state, toggle, skip, restart } = useWorkoutTimer(workout);
-  const { phase, stepIndex, timeLeft, totalTime, isPaused, elapsedSeconds } = state;
+  const { phase, stepIndex, timeLeft, totalTime, isPaused, elapsedSeconds, rounds, totalElapsedSeconds } = state;
 
   const currentStep = workout.steps[stepIndex];
   const currentExercise = currentStep ? EXERCISES[currentStep.exerciseId] : null;
@@ -59,6 +59,9 @@ export function WorkoutScreen({ workout, onDone }: Props) {
 
   // ─── Complete screen ──────────────────────────────────────────────────────
   if (phase === 'complete') {
+    const grandTotal = totalElapsedSeconds + elapsedSeconds;
+    const isMultiRound = rounds > 1;
+
     return (
       <div className="workout-screen workout-screen--complete">
         <div className="complete-content">
@@ -70,8 +73,12 @@ export function WorkoutScreen({ workout, onDone }: Props) {
           </div>
           <h2 className="complete-title">Done.</h2>
           <p className="complete-workout-name">{workout.name}</p>
-          <p className="complete-time">{formatElapsed(elapsedSeconds)}</p>
-          <p className="complete-steps">{workout.steps.length} exercises complete</p>
+          <p className="complete-time">{formatElapsed(grandTotal)}</p>
+          {isMultiRound ? (
+            <p className="complete-rounds">{rounds} rounds · {formatElapsed(elapsedSeconds)} last round</p>
+          ) : (
+            <p className="complete-steps">{workout.steps.length} exercises</p>
+          )}
           <button className="complete-btn" onClick={restart}>One more round</button>
           <button className="complete-btn complete-btn--secondary" onClick={onDone}>Back to home</button>
         </div>

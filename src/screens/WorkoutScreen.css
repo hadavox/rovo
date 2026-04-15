@@ -264,6 +264,13 @@
   margin: 0;
 }
 
+.complete-rounds {
+  font-size: 0.82rem;
+  color: var(--accent);
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
 .complete-btn {
   margin-top: 28px;
   background: var(--accent);

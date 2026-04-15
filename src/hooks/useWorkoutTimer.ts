@@ -10,7 +10,9 @@ export interface TimerState {
   timeLeft: number;        // seconds remaining in current phase
   totalTime: number;       // total seconds in current phase
   isPaused: boolean;
-  elapsedSeconds: number;  // total workout time elapsed
+  elapsedSeconds: number;  // elapsed seconds in the current round
+  rounds: number;          // completed rounds (1 = first round)
+  totalElapsedSeconds: number; // cumulative elapsed across all completed rounds
 }
 
 export function useWorkoutTimer(workout: Workout) {
@@ -23,6 +25,8 @@ export function useWorkoutTimer(workout: Workout) {
     totalTime: 5,
     isPaused: false,
     elapsedSeconds: 0,
+    rounds: 1,
+    totalElapsedSeconds: 0,
   });
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -143,14 +147,16 @@ export function useWorkoutTimer(workout: Workout) {
   }, []);
 
   const restart = useCallback(() => {
-    setState({
+    setState((prev) => ({
       phase: 'intro',
       stepIndex: 0,
       timeLeft: 5,
       totalTime: 5,
       isPaused: false,
       elapsedSeconds: 0,
-    });
+      rounds: prev.rounds + 1,
+      totalElapsedSeconds: prev.totalElapsedSeconds + prev.elapsedSeconds,
+    }));
   }, []);
 
   const skip = useCallback(() => {
