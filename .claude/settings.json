@@ -1,0 +1,76 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write",
+      "Edit",
+      "MultiEdit",
+
+      "Bash(ls *)",
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Bash(cat *)",
+      "Bash(echo *)",
+      "Bash(pwd)",
+      "Bash(which *)",
+      "Bash(wc *)",
+
+      "Bash(node *)",
+      "Bash(tsx *)",
+      "Bash(tsc *)",
+      "Bash(vite *)",
+      "Bash(npm run *)",
+      "Bash(npx *)",
+      "Bash(pnpm run *)",
+      "Bash(pnpm exec *)",
+      "Bash(pnpm install)",
+      "Bash(pnpm add *)",
+      "Bash(pnpm dlx *)",
+      "Bash(fnm *)",
+
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git show *)",
+      "Bash(git branch *)",
+      "Bash(git stash list)",
+      "Bash(git add *)",
+      "Bash(git restore *)",
+
+      "Bash(mkdir *)",
+      "Bash(touch *)",
+      "Bash(cp *)",
+      "Bash(mv *)"
+    ],
+
+    "ask": [
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(git merge *)",
+      "Bash(git rebase *)",
+      "Bash(git reset *)",
+      "Bash(git stash *)",
+      "Bash(git tag *)",
+      "Bash(npm install)",
+      "Bash(npm publish *)",
+      "Bash(pnpm publish *)",
+      "Bash(vercel *)",
+      "WebFetch"
+    ],
+
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(rm -r *)",
+      "Bash(sudo *)",
+      "Bash(chmod 777 *)",
+      "Bash(curl * | bash)",
+      "Bash(wget * | bash)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Bash(npx --yes *)"
+    ]
+  },
+
+  "defaultMode": "acceptEdits"
+}
