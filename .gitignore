@@ -2,3 +2,8 @@ node_modules/
 dist/
 .DS_Store
 *.local
+
+# Exercise demo generator
+scripts/character.png
+scripts/character.json
+scripts/_tmp/

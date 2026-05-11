@@ -181,6 +181,20 @@
   letter-spacing: 0.02em;
 }
 
+/* ─── Paused state ────────────────────────────────────────────────────────── */
+.workout-screen.is-paused .timer-section,
+.workout-screen.is-paused .exercise-section,
+.workout-screen.is-paused .demo-section,
+.workout-screen.is-paused .next-section {
+  opacity: 0.35;
+  transition: opacity 0.2s ease;
+}
+
+.workout-screen.is-paused .phase-label::after {
+  content: ' — PAUSED';
+  color: var(--text-muted);
+}
+
 /* ─── Controls ────────────────────────────────────────────────────────────── */
 .workout-controls {
   display: flex;

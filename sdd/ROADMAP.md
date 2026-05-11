@@ -15,9 +15,7 @@ Status values: `done` | `in-progress` | `planned` | `on-hold`
 
 ## In Progress
 
-| Feature | Branch | Notes |
-|---|---|---|
-| AI-generated exercise demos | `feature/exercise-animations` | Comic-style animated WebPs via Replicate; script infrastructure done, 1 test WebP (pushup.webp) exists; model selection pending |
+_Nothing currently in progress._
 
 ## Planned
 
@@ -28,4 +26,6 @@ Status values: `done` | `in-progress` | `planned` | `on-hold`
 
 ## On Hold
 
-_Nothing currently on hold._
+| Feature | Branch | Notes |
+|---|---|---|
+| AI-generated exercise demos | `feature/exercise-animations` | Comic-style animated WebPs via Replicate; script infra done, 1 test WebP exists; parked until core app is further along |

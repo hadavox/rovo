@@ -1,3 +1,5 @@
+import { EXERCISES } from './exercises';
+
 export type WorkoutCategory = 'strength' | 'mobility' | 'mixed';
 export type Difficulty = 'easy' | 'medium' | 'hard';
 
@@ -182,3 +184,13 @@ export const WORKOUTS: Workout[] = WORKOUTS_RAW.map((w) => ({
   ...w,
   durationMinutes: Math.round(totalSeconds(w.steps) / 60),
 }));
+
+if (import.meta.env.DEV) {
+  for (const workout of WORKOUTS) {
+    for (const step of workout.steps) {
+      if (!EXERCISES[step.exerciseId]) {
+        throw new Error(`Workout "${workout.name}" references unknown exerciseId: "${step.exerciseId}"`);
+      }
+    }
+  }
+}

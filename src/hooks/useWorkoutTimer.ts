@@ -18,6 +18,10 @@ export interface TimerState {
 export function useWorkoutTimer(workout: Workout) {
   const { countdownTick, workTransition, restTransition, workoutComplete } = useAudio();
 
+  if (workout.steps.length === 0) {
+    throw new Error(`Workout "${workout.name}" has no steps`);
+  }
+
   const [state, setState] = useState<TimerState>({
     phase: 'intro',
     stepIndex: 0,
@@ -161,42 +165,43 @@ export function useWorkoutTimer(workout: Workout) {
 
   const skip = useCallback(() => {
     setState((prev) => {
-      const { phase, stepIndex } = prev;
+      const { phase, stepIndex, elapsedSeconds, timeLeft } = prev;
+      const skippedElapsed = elapsedSeconds + timeLeft;
 
       if (phase === 'intro') {
         const step = workout.steps[0];
         workTransition();
         haptic([100, 50, 100]);
-        return { ...prev, phase: 'work', stepIndex: 0, timeLeft: step.duration, totalTime: step.duration };
+        return { ...prev, phase: 'work', stepIndex: 0, timeLeft: step.duration, totalTime: step.duration, elapsedSeconds: skippedElapsed };
       }
 
       if (phase === 'work') {
         const step = workout.steps[stepIndex];
         if (step.rest > 0) {
           restTransition();
-          return { ...prev, phase: 'rest', timeLeft: step.rest, totalTime: step.rest };
+          return { ...prev, phase: 'rest', timeLeft: step.rest, totalTime: step.rest, elapsedSeconds: skippedElapsed };
         }
         const nextIndex = stepIndex + 1;
         if (nextIndex >= workout.steps.length) {
           workoutComplete();
-          return { ...prev, phase: 'complete', timeLeft: 0, totalTime: 0 };
+          return { ...prev, phase: 'complete', timeLeft: 0, totalTime: 0, elapsedSeconds: skippedElapsed };
         }
         const nextStep = workout.steps[nextIndex];
         workTransition();
         haptic([100, 50, 100]);
-        return { ...prev, phase: 'work', stepIndex: nextIndex, timeLeft: nextStep.duration, totalTime: nextStep.duration };
+        return { ...prev, phase: 'work', stepIndex: nextIndex, timeLeft: nextStep.duration, totalTime: nextStep.duration, elapsedSeconds: skippedElapsed };
       }
 
       if (phase === 'rest') {
         const nextIndex = stepIndex + 1;
         if (nextIndex >= workout.steps.length) {
           workoutComplete();
-          return { ...prev, phase: 'complete', timeLeft: 0, totalTime: 0 };
+          return { ...prev, phase: 'complete', timeLeft: 0, totalTime: 0, elapsedSeconds: skippedElapsed };
         }
         const nextStep = workout.steps[nextIndex];
         workTransition();
         haptic([100, 50, 100]);
-        return { ...prev, phase: 'work', stepIndex: nextIndex, timeLeft: nextStep.duration, totalTime: nextStep.duration };
+        return { ...prev, phase: 'work', stepIndex: nextIndex, timeLeft: nextStep.duration, totalTime: nextStep.duration, elapsedSeconds: skippedElapsed };
       }
 
       return prev;

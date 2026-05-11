@@ -3,7 +3,17 @@
     "allow": [
       "Bash(npm --version)",
       "Bash(npm create:*)",
-      "Bash(npm init:*)"
+      "Bash(npm init:*)",
+      "Bash(node -e \"require\\('sharp'\\)\")",
+      "Bash(node -e \"require\\('canvas'\\)\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(npm run *)",
+      "Bash(gh pr *)",
+      "Bash(git checkout *)",
+      "Bash(git pull *)",
+      "Bash(npx tsc *)"
     ]
   }
 }
