@@ -8,6 +8,7 @@
       "Bash(node -e \"require\\('canvas'\\)\")",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
+      "Bash(git commit *)",
       "Bash(git push *)",
       "Bash(npm run *)",
       "Bash(gh pr *)",
@@ -16,8 +17,7 @@
       "Bash(npx tsc *)",
       "Bash(git merge *)",
       "Bash(git branch *)",
-      "Bash(git stash *)",
-      "Bash(git commit *)"
+      "Bash(git stash *)"
     ]
   }
 }

@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Security
+
+**Never read `.env.local`** — it contains secret API tokens. Do not open, cat, or inspect this file under any circumstances.
+
 ## Commands
 
 ```bash

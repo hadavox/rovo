@@ -89,7 +89,7 @@ export function WorkoutScreen({ workout, onDone }: Props) {
   const phaseClass = phase === 'work' ? 'phase--work' : phase === 'rest' ? 'phase--rest' : '';
 
   return (
-    <div className={`workout-screen ${phaseClass}`}>
+    <div className={`workout-screen ${phaseClass}${isPaused ? ' is-paused' : ''}`}>
 
       {/* ─── Top bar ──────────────────────────────────────────────────────── */}
       <div className="workout-topbar">
@@ -100,7 +100,9 @@ export function WorkoutScreen({ workout, onDone }: Props) {
           <div
             className="workout-progress-fill"
             style={{
-              width: `${phase === 'intro' ? 0 : ((stepIndex + (phase === 'rest' ? 1 : 0)) / workout.steps.length) * 100}%`,
+              width: phase === 'intro'
+                ? `${((5 - timeLeft) / 5) * 100}%`
+                : `${((stepIndex + (phase === 'rest' ? 1 : 0)) / workout.steps.length) * 100}%`,
             }}
           />
         </div>
@@ -142,7 +144,10 @@ export function WorkoutScreen({ workout, onDone }: Props) {
       {/* ─── Exercise info ────────────────────────────────────────────────── */}
       <div className="exercise-section">
         {phase === 'intro' ? (
-          <p className="exercise-name exercise-name--intro">Get into position</p>
+          <>
+            <p className="exercise-name exercise-name--intro">{currentExercise?.name ?? 'Get ready'}</p>
+            <p className="exercise-cue">Get into position</p>
+          </>
         ) : phase === 'rest' ? (
           <>
             <p className="exercise-name">Rest</p>
@@ -150,18 +155,18 @@ export function WorkoutScreen({ workout, onDone }: Props) {
               <p className="next-up-label">UP NEXT: {upNextExercise.name}</p>
             )}
           </>
-        ) : (
+        ) : currentExercise ? (
           <>
-            <p className="exercise-name">{currentExercise?.name}</p>
-            {currentExercise && (
-              <p className="exercise-cue">{currentExercise.cues[cueIndex]}</p>
-            )}
+            <p className="exercise-name">{currentExercise.name}</p>
+            <p className="exercise-cue">{currentExercise.cues[cueIndex]}</p>
           </>
+        ) : (
+          <p className="exercise-name exercise-name--intro">Unknown exercise</p>
         )}
       </div>
 
       {/* ─── Demo animation ───────────────────────────────────────────────── */}
-      {currentExercise && phase === 'work' && (
+      {currentExercise && (phase === 'work' || phase === 'intro') && (
         <div className="demo-section">
           <ExerciseDemo animationKey={currentExercise.animation} size={148} />
         </div>
