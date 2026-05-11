@@ -3,6 +3,7 @@ import './HomeScreen.css';
 
 interface Props {
   onSelect: (category: WorkoutCategory | 'all') => void;
+  onChallenges: () => void;
 }
 
 const FOCUS_OPTIONS: { key: WorkoutCategory; label: string; sub: string }[] = [
@@ -11,7 +12,7 @@ const FOCUS_OPTIONS: { key: WorkoutCategory; label: string; sub: string }[] = [
   { key: 'mixed',    label: 'Both',      sub: 'Strength + mobility' },
 ];
 
-export function HomeScreen({ onSelect }: Props) {
+export function HomeScreen({ onSelect, onChallenges }: Props) {
   return (
     <div className="home">
       <header className="home-header">
@@ -34,6 +35,13 @@ export function HomeScreen({ onSelect }: Props) {
           ))}
         </div>
       </main>
+
+      <div className="home-challenges">
+        <button className="challenges-entry-btn" onClick={onChallenges}>
+          <span className="challenges-entry-label">Challenges</span>
+          <span className="challenges-entry-sub">Daily goals · streaks</span>
+        </button>
+      </div>
 
       <footer className="home-footer">
         <button className="all-workouts-btn" onClick={() => onSelect('all')}>

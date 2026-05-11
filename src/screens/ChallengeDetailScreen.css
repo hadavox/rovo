@@ -1,0 +1,362 @@
+.detail-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: var(--bg);
+  padding: env(safe-area-inset-top, 12px) 0 env(safe-area-inset-bottom, 24px);
+}
+
+/* ─── Top bar ─────────────────────────────────────────────────────────────── */
+.detail-topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px 12px;
+}
+
+.detail-back-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.detail-back-btn:hover { color: var(--text-secondary); }
+
+.detail-challenge-name {
+  flex: 1;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detail-abandon-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  cursor: pointer;
+  padding: 4px 0;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.detail-abandon-btn:hover { color: var(--text-secondary); }
+
+/* ─── Content ─────────────────────────────────────────────────────────────── */
+.detail-content {
+  flex: 1;
+  padding: 24px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ─── Dots ────────────────────────────────────────────────────────────────── */
+.detail-dots-wrap {
+  padding: 4px 0;
+}
+
+.detail-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.detail-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.detail-dot--done {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.detail-dot--current {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.detail-dot--future {
+  background: transparent;
+  border-color: var(--border);
+}
+
+/* ─── Stats ───────────────────────────────────────────────────────────────── */
+.detail-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.detail-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.detail-stat-value {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.detail-stat-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.detail-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border);
+}
+
+/* ─── Action card ─────────────────────────────────────────────────────────── */
+.detail-action-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.detail-action-btn {
+  background: var(--accent);
+  color: #0d0d0d;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 13px 32px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+  margin-top: 4px;
+}
+.detail-action-btn:hover  { opacity: 0.9; }
+.detail-action-btn:active { transform: scale(0.97); }
+
+/* Complete */
+.detail-complete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.detail-complete-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+}
+
+/* Not due */
+.detail-not-due {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-not-due-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.detail-not-due-date {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Done today */
+.detail-done-today {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.detail-done-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+}
+
+/* Rep logger */
+.detail-rep-logger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.detail-rep-target-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.detail-rep-control {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.detail-rep-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.6rem;
+  font-weight: 300;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.12s;
+}
+.detail-rep-btn:hover  { background: var(--surface); }
+.detail-rep-btn:active { background: var(--surface-2); }
+
+.detail-rep-value {
+  min-width: 72px;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.detail-rep-target {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Workout action */
+.detail-workout-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.detail-workout-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.detail-workout-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px;
+}
+
+/* ─── Abandon overlay ─────────────────────────────────────────────────────── */
+.detail-abandon-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: flex-end;
+  padding: 0 0 env(safe-area-inset-bottom, 24px);
+  z-index: 100;
+}
+
+.detail-abandon-dialog {
+  background: var(--surface);
+  border-radius: 20px 20px 0 0;
+  padding: 28px 24px 24px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detail-abandon-dialog-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.detail-abandon-dialog-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-abandon-dialog-cancel {
+  background: var(--accent);
+  color: #0d0d0d;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 14px;
+  border-radius: 100px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.detail-abandon-dialog-confirm {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1.5px solid var(--border);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 13px;
+  border-radius: 100px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.detail-abandon-dialog-confirm:hover { color: var(--text-secondary); }

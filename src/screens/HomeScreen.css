@@ -108,6 +108,43 @@
   letter-spacing: 0.03em;
 }
 
+/* ─── Challenges entry ────────────────────────────────────────────────────── */
+.home-challenges {
+  padding: 8px 0 4px;
+}
+
+.challenges-entry-btn {
+  width: 100%;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.15s, background 0.15s;
+}
+.challenges-entry-btn:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+}
+
+.challenges-entry-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.challenges-entry-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
 /* ─── Footer ──────────────────────────────────────────────────────────────── */
 .home-footer {
   padding: 16px 0 8px;
